@@ -1,0 +1,522 @@
+html {
+  scroll-behavior: smooth;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body,
+html {
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", sans-serif;
+  background: #0a0a0a;
+  color: #fff;
+}
+
+/* --- Navbar --- */
+.navbar {
+  position: fixed;
+  top: 16px;
+  left: 20px;
+  right: 20px;
+  height: 54px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 24px;
+  z-index: 999;
+  background: rgba(15, 15, 15, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
+}
+
+.navbar-logo {
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: #ffffff;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.navbar-logo::before {
+  /* content: "📈"; */
+  margin-right: 8px;
+  font-size: 16px;
+  display: inline-block;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.navbar-logo:hover {
+  color: #00ff88;
+  cursor: pointer;
+  transform: translateY(-1px);
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+.navbar-links {
+  list-style: none;
+  display: flex;
+  gap: 24px;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-links a {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 450;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  position: relative;
+  padding: 8px 12px;
+  border-radius: 6px;
+}
+
+.navbar-links a:hover {
+  color: #00ff88;
+  background: rgba(0, 255, 136, 0.1);
+  transform: translateY(-1px);
+}
+
+.navbar-links a::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #00ff88, #00d4ff);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.navbar-links a:hover::before {
+  width: 80%;
+}
+
+/* --- Hero Section --- */
+.hero-section {
+  position: relative;
+  width: 100%;
+  height: 85vh;
+  margin-top: 90px;
+  overflow: hidden;
+}
+
+.chart-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #0a0a0a 0%, #111111 100%);
+  border-radius: 0;
+}
+
+.hero-text {
+  position: absolute;
+  top: 50%;
+  left: 60px;
+  transform: translateY(-50%);
+  color: white;
+  text-align: left;
+  z-index: 2;
+  max-width: 480px;
+}
+
+.hero-text h1 {
+  font-size: 3.2rem;
+  line-height: 1.1;
+  margin-bottom: 16px;
+  color: #ffffff;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  animation: fadeInUpEnhanced 1.5s ease-out forwards;
+  background: linear-gradient(80deg,#000b47 5%, #ffffff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-text p {
+  font-size: 1.1rem;
+  margin-bottom: 32px;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.5;
+animation: fadeInUpEnhanced 2s ease-out 0.3s forwards;
+}
+
+@keyframes fadeInUpEnhanced {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.98);
+    filter: blur(4px);
+  }
+  50% {
+    opacity: 0.5;
+    transform: translateY(10px) scale(1.01);
+    filter: blur(2px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+.hero-button {
+  background: linear-gradient(135deg, #00ff88 0%, #00d4ff 100%);
+  color: #000000;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 255, 136, 0.3);
+  position: relative;
+  overflow: hidden;
+  animation: fadeInUp 2s ease-out 0.4s both;
+}
+
+.hero-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.hero-button:hover::before {
+  left: 100%;
+}
+
+.hero-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 255, 136, 0.4);
+  background: linear-gradient(135deg, #00d4ff 0%, #00ff88 100%);
+}
+
+canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  background: transparent;
+}
+
+section {
+  background: rgba(20, 20, 20, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  margin: 40px 60px;
+  padding: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  color: white;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, #00ff88, #00d4ff, #ff6b6b);
+  transition: left 0.6s ease;
+}
+
+section:hover::before {
+  left: 100%;
+}
+
+section:hover {
+  background: rgba(25, 25, 25, 0.8);
+  border-color: rgba(0, 255, 136, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0, 255, 136, 0.1);
+}
+
+section h2 {
+  font-size: 2rem;
+  color: #ffffff;
+  margin-bottom: 24px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  position: relative;
+  display: inline-block;
+}
+
+.about-section h2::before {
+  content: "👤";
+  margin-right: 12px;
+}
+
+.services-section h2::before {
+  content: "⚡";
+  margin-right: 12px;
+}
+
+.blogs-section h2::before {
+  content: "📝";
+  margin-right: 12px;
+}
+
+.contact-section h2::before {
+  content: "💬";
+  margin-right: 12px;
+}
+
+section p,
+section li {
+  line-height: 1.6;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+section ul {
+  font-size: 1rem;
+  list-style: none;
+  padding-left: 0;
+}
+
+section a {
+  color: #00ff88;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(0, 255, 136, 0.3);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+section a:hover {
+  color: #00d4ff;
+  border-bottom-color: rgba(0, 212, 255, 0.6);
+  transform: translateY(-1px);
+}
+
+.services-section li {
+  padding-left: 32px;
+  position: relative;
+  margin-bottom: 16px;
+  transition: all 0.3s ease;
+  border-radius: 8px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.services-section li:hover {
+  background: rgba(0, 255, 136, 0.05);
+  transform: translateX(8px);
+}
+
+.services-section li::before {
+  content: "";
+  position: absolute;
+  left: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 6px;
+  background: linear-gradient(135deg, #00ff88, #00d4ff);
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(0, 255, 136, 0.5);
+}
+
+.blogs-section p {
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.6);
+  text-align: center;
+  font-size: 1rem;
+}
+
+/* --- Contact Section --- */
+.contact-section form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.contact-section input,
+.contact-section textarea {
+  background-color: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: white;
+  padding: 14px 18px;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.contact-section input:focus,
+.contact-section textarea:focus {
+  outline: none;
+  border-color: rgba(0, 255, 136, 0.5);
+  background-color: rgba(0, 255, 136, 0.05);
+  box-shadow: 0 0 0 3px rgba(0, 255, 136, 0.1);
+  transform: translateY(-1px);
+}
+
+.contact-section button {
+  width: fit-content;
+  padding: 14px 28px;
+  background: linear-gradient(135deg, #00ff88 0%, #00d4ff 100%);
+  color: #000000;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-section button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.contact-section button:hover::before {
+  left: 100%;
+}
+
+.contact-section button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 255, 136, 0.4);
+}
+
+.whatsapp-button {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 16px;
+  padding: 14px 28px;
+  background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.whatsapp-button::before {
+  content: "💬";
+  margin-right: 8px;
+  font-size: 16px;
+}
+
+.whatsapp-button::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.whatsapp-button:hover::after {
+  left: 100%;
+}
+
+.whatsapp-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+  background: linear-gradient(135deg, #128c7e 0%, #25d366 100%);
+}
+
+/* --- Footer --- */
+.footer {
+  background: rgba(15, 15, 15, 0.8);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: rgba(255, 255, 255, 0.7);
+  text-align: center;
+  margin: 40px 60px 20px;
+  padding: 32px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  font-size: 14px;
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .navbar {
+    left: 16px;
+    right: 16px;
+    padding: 8px 20px;
+  }
+
+  .hero-section {
+    margin-top: 80px;
+    height: 70vh;
+  }
+
+  .hero-text {
+    left: 24px;
+    right: 24px;
+    max-width: none;
+  }
+
+  .hero-text h1 {
+    font-size: 2.4rem;
+  }
+
+  section,
+  .footer {
+    margin-left: 24px;
+    margin-right: 24px;
+    padding: 32px 24px;
+  }
+}
